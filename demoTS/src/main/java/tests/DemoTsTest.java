@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.DemoTsPage;
 
@@ -55,11 +56,14 @@ public class DemoTsTest {
     }
 
     @Test
-    public void abrirGoogleTest() {
+    @Parameters({"texto"})
+    public void abrirGoogleTest(String texto) throws InterruptedException {
         demoTsPage.abrirGoogle();
 
         // Realizar un SELECT en la base de datos después de abrir Google
         selectDataFromDatabase();
+        demoTsPage.rellenarInputGoogle(texto);
+        Thread.sleep(20000);
     }
 
     public void selectDataFromDatabase() {
