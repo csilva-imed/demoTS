@@ -34,51 +34,51 @@ public class GoogleTest {
         // Inicialización de la página
         googlePage = new GooglePage(driver);
 
-//        // Configuración de ExtentReports
-//        ExtentSparkReporter sparkReporter = new ExtentSparkReporter("reporte.html");
-//        sparkReporter.config().setDocumentTitle("Reporte de Pruebas");
-//        sparkReporter.config().setReportName("Reporte Google Test");
-//        sparkReporter.config().setTheme(Theme.STANDARD);
-//
-//        extent = new ExtentReports();
-//        extent.attachReporter(sparkReporter);
+        // Configuración de ExtentReports
+        ExtentSparkReporter sparkReporter = new ExtentSparkReporter("reporte.html");
+        sparkReporter.config().setDocumentTitle("Reporte de Pruebas");
+        sparkReporter.config().setReportName("Reporte Google Test");
+        sparkReporter.config().setTheme(Theme.STANDARD);
+
+        extent = new ExtentReports();
+        extent.attachReporter(sparkReporter);
 
     }
 
     @Test
     public void openGoogleTest() throws InterruptedException {
-     //   test = extent.createTest("Abrir Google y capturar pantalla");
+        test = extent.createTest("Abrir Google y capturar pantalla");
         googlePage.openGoogle();
         Thread.sleep(5000);
         // Verificación (puedes agregar alguna verificación básica, como el título)
-//        Assert.assertTrue(driver.getTitle().contains("Google"));
-//        // Captura de pantalla
-//        String screenshotPath = takeScreenshot("GoogleHomePage");
-//        test.addScreenCaptureFromPath(screenshotPath, "Captura de la página de inicio de Google");
+        Assert.assertTrue(driver.getTitle().contains("Google"));
+        // Captura de pantalla
+        String screenshotPath = takeScreenshot("GoogleHomePage");
+        test.addScreenCaptureFromPath(screenshotPath, "Captura de la página de inicio de Google");
 
-       /* googlePage.escribirGoogle("gatitos");
+        googlePage.escribirGoogle("gatitos");
         String screenshotPath2 = takeScreenshot("busqueda");
-        test.addScreenCaptureFromPath(screenshotPath2, "Captura de la página de inicio de Google y escribir");*/
+        test.addScreenCaptureFromPath(screenshotPath2, "Captura de la página de inicio de Google y escribir");
     }
 
 
-//    public String takeScreenshot(String fileName) {
-//        TakesScreenshot ts = (TakesScreenshot) driver;
-//        File srcFile = ts.getScreenshotAs(OutputType.FILE);
-//        String destPath = System.getProperty("user.dir") + "/screenshots/" + fileName + ".png";
-//        try {
-//            Files.createDirectories(Paths.get("screenshots"));
-//            Files.copy(srcFile.toPath(), Paths.get(destPath));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return destPath;
-//    }
+    public String takeScreenshot(String fileName) {
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        File srcFile = ts.getScreenshotAs(OutputType.FILE);
+        String destPath = System.getProperty("user.dir") + "/screenshots/" + fileName + ".png";
+        try {
+            Files.createDirectories(Paths.get("screenshots"));
+            Files.copy(srcFile.toPath(), Paths.get(destPath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return destPath;
+    }
 
     @AfterClass
     public void tearDown() {
-        // Finaliza el reporte
-       // extent.flush();
+//         Finaliza el reporte
+        extent.flush();
 
         // Cierra el navegador
         if (driver != null) {

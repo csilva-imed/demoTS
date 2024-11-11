@@ -29,22 +29,22 @@ public class GooglePage {
     }
 
 
-//    @FindBy(xpath = "//*[@id=\"APjFqb\"]")
-//    private WebElement buscar;
-//    private static final Duration DEFAULT_WAIT_FOR_ELEMENT_TIMEOUT = Duration.ofSeconds(15);
-//
-//    private WebElement waitFor(WebElement element) {
-//        WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_FOR_ELEMENT_TIMEOUT);
-//        wait.ignoring(StaleElementReferenceException.class);
-//        return wait.until(elementToBeClickable(element));
-//    }
-//
-//    public void escribirGoogle(String buscarG) {
-//
-//        waitFor(buscar).clear();
-//        buscar.sendKeys(buscarG);
-//        Assert.assertEquals(buscar.getAttribute("value"), buscarG, "El texto en el campo de búsqueda no es correcto.");
-//
-//    }
+    @FindBy(xpath = "//*[@id=\"APjFqb\"]")
+    private WebElement buscar;
+    private static final Duration DEFAULT_WAIT_FOR_ELEMENT_TIMEOUT = Duration.ofSeconds(15);
+
+    private WebElement waitFor(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_FOR_ELEMENT_TIMEOUT);
+        wait.ignoring(StaleElementReferenceException.class);
+        return wait.until(elementToBeClickable(element));
+    }
+
+    public void escribirGoogle(String buscarG) {
+
+        waitFor(buscar).clear();
+        buscar.sendKeys(buscarG);
+        Assert.assertEquals(buscar.getAttribute("value"), buscarG, "El texto en el campo de búsqueda no es correcto.");
+
+    }
 }
 

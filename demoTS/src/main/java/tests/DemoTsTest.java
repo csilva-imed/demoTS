@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -59,6 +60,8 @@ public class DemoTsTest {
     @Parameters({"texto"})
     public void abrirGoogleTest(String texto) throws InterruptedException {
         demoTsPage.abrirGoogle();
+        Assert.assertTrue(driver.getTitle().contains("Google"));
+
 
         // Realizar un SELECT en la base de datos después de abrir Google
         selectDataFromDatabase();
