@@ -34,7 +34,7 @@ public class DemoTsTest {
         driver = new ChromeDriver(options);
         demoTsPage = new DemoTsPage(driver);
 
-        // Cargar propiedades desde el archivo db.properties
+        // Cargamos propiedades desde el archivo db.properties
         properties = new Properties();
         try (FileInputStream input = new FileInputStream("src/main/resources/db.properties")) {
             properties.load(input);
@@ -43,7 +43,7 @@ public class DemoTsTest {
             System.out.println("Error al cargar el archivo de propiedades");
         }
 
-        // Establecer conexión con la base de datos utilizando las propiedades cargadas
+        // Establecemos conexión con la base de datos utilizando las propiedades cargadas
         try {
             String url = properties.getProperty("db.url");
             String username = properties.getProperty("db.username");
@@ -62,14 +62,13 @@ public class DemoTsTest {
         demoTsPage.abrirGoogle();
         Assert.assertTrue(driver.getTitle().contains("Google"));
 
-
         // Realizar un SELECT en la base de datos después de abrir Google
-        selectDataFromDatabase();
+        selectBaseDatos();
         demoTsPage.rellenarInputGoogle(texto);
         Thread.sleep(20000);
     }
 
-    public void selectDataFromDatabase() {
+    public void selectBaseDatos() {
         // Consulta SQL para seleccionar datos de la tabla cliente (puedes personalizarla)
         String query = "SELECT * FROM cliente LIMIT 5"; // Ejemplo de SELECT a la tabla cliente
         try {

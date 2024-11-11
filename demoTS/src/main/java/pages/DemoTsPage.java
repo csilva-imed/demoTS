@@ -29,5 +29,4 @@ public class DemoTsPage {
         Assert.assertEquals(inputGoogle.getAttribute("value"), texto, "El texto en el campo de búsqueda no es correcto.");
 
     }
-
 }
