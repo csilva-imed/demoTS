@@ -59,6 +59,9 @@ public class GoogleTest {
         googlePage.escribirGoogle("gatitos");
         String screenshotPath2 = takeScreenshot("busqueda");
         test.addScreenCaptureFromPath(screenshotPath2, "Captura de la página de inicio de Google y escribir");
+
+
+
     }
 
 
